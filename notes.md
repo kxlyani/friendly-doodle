@@ -1,4 +1,4 @@
-sign in userS:
+# sign in users
 1. get data
 2. validate 
 3. check if user exists in db 
