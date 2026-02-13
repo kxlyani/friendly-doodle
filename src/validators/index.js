@@ -23,4 +23,23 @@ const userRegisterValidator = () => {
     ];
 };
 
-export { userRegisterValidator };
+const userLoginValidator = () => {
+    return [
+        body("email")
+            .notEmpty()
+            .withMessage("Please enter your email")
+            .trim()
+            .isEmail()
+            .withMessage("Invalid email"),
+        body("username")
+            .isEmpty()
+            .withMessage("Please enter your username")
+            .trim()
+            .isLowercase()
+            .withMessage("Username should be lowercase only")
+            .isLength({ min: 3 })
+            .withMessage("Username should be atlelast 3 charaters long"),
+    ];
+};
+
+export { userRegisterValidator, userLoginValidator };
