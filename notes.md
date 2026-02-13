@@ -1,7 +1,18 @@
-# sign in users
-1. get data
-2. validate 
-3. check if user exists in db 
-4. save user - (AT, RT, TT, sendmail for verification)
-5. authenticate mail 
-6. send request back to user
+# my notes 
+
+## 1. Auth
+### 1.1 Sign in users
+- get data
+- validate 
+- check if user exists in db 
+- save user - (AT, RT, TT, sendmail for verification)
+- authenticate mail 
+- send request back to user
+
+### Login users
+- take data from user 
+- validate data
+- check if usr exists
+- check password 
+- generate tokens 
+- send tokens in cookies  

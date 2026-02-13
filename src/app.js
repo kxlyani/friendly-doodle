@@ -1,7 +1,15 @@
 import express from "express";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 
 const app = express();
+
+// basic configurations
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
+
+// cors configurations
 app.use(
   cors({
     origin: process.env.CORS_ORIGIN?.split(",") || "*",
@@ -11,12 +19,11 @@ app.use(
   }),
 );
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
+// import routes 
+import healthCheckRouter from "./routes/healthcheck.routes.js";
+app.use("/api/v1/healthcheck/", healthCheckRouter);
 
-app.get("/testpage", (req, res) => {
-  res.send("This is a test page.");
-});
+import authRouter from "./routes/auth.routes.js";
+app.use("/api/v1/auth/", authRouter);
 
 export default app;
