@@ -3,42 +3,46 @@ import { body } from "express-validator";
 const userRegisterValidator = () => {
     return [
         body("email")
+            .trim()
             .notEmpty()
             .withMessage("Email is required")
-            .trim()
             .isEmail()
             .withMessage("Email is invalid"),
         body("username")
+            .trim()
             .notEmpty()
             .withMessage("Username is required")
-            .trim()
             .isLowercase()
             .withMessage("Username must be lowercase")
             .isLength({ min: 3 })
-            .withMessage("Username must be atleast 3 characters"),
+            .withMessage("Username must be at least 3 characters"),
         body("password")
+            .trim()
             .notEmpty()
-            .withMessage("Please enter a password")
-            .trim(),
+            .withMessage("Password is required")
+            .isLength({ min: 6 })
+            .withMessage("Password must be at least 6 characters"),
     ];
 };
 
 const userLoginValidator = () => {
     return [
         body("email")
-            .notEmpty()
-            .withMessage("Please enter your email")
+            .optional()
             .trim()
             .isEmail()
             .withMessage("Invalid email"),
         body("username")
-            .isEmpty()
-            .withMessage("Please enter your username")
+            .optional()
             .trim()
             .isLowercase()
             .withMessage("Username should be lowercase only")
             .isLength({ min: 3 })
-            .withMessage("Username should be atlelast 3 charaters long"),
+            .withMessage("Username should be at least 3 characters long"),
+        body("password")
+            .trim()
+            .notEmpty()
+            .withMessage("Password is required"),
     ];
 };
 
