@@ -16,3 +16,8 @@
 - check password 
 - generate tokens 
 - send tokens in cookies  
+
+### change password 
+- verify user through cookies 
+    - get user
+    - get accesstoken
